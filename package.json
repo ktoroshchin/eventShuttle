@@ -1,0 +1,19 @@
+{
+  "name": "eventshuttle",
+  "version": "0.0.5",
+  "description": "The EventShuttle service is a subscribe event manager which allows de-coupling of event source and handler",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ktoroshchin/eventShuttle.git"
+  },
+  "author": "Konstantin Toroshchin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ktoroshchin/eventShuttle/issues"
+  },
+  "homepage": "https://github.com/ktoroshchin/eventShuttle#readme"
+}
