@@ -19,12 +19,17 @@ eventShuttle.removeEventListener('unique.event.key', myEventHandlerFunction)
 
 Removing Listeners
 
-Both the key and the event must be exactly the same as the ones provided to the addEventListener function. In JavaScript strings are objects; it's not needed to pass the same string object - only the values of the strings need to match. The listener function must be a reference to exactly the same function. This means you cannot use an anonymous function in your addEventListener call.
+Both the key and the event must be exactly the same as the ones provided to the addEventListener function. The listener function must be a reference to exactly the same function. This means you cannot use an anonymous function in your addEventListener call.
+
+Dont do this: 
+eventShuttle.addEventListener('toolbarMode.mdoe', () => console.log('hello world'))
+You wont be able to remove this event listener.
+eventShuttle.removeEventListener('toolbarMode.mode', () => console.log('hello world'))
 
 ## Dispatching Events
 Sending an event through the eventShuttle is done with the dispatch function.
 
-eventShuttle.dispatch('unique.event.key' [, payload])
+eventShuttle.dispatch('toolbarMode.mode' [, payload])
 Any object, array or primitive can be sent along with the event via the optional payload parameter. 
 The payload will be the second parameter provided to the event listeners.
 
@@ -37,13 +42,13 @@ const handleMode = (eventName: string, payload: { mode: string }) => {
 }
 
 React.useEffect(() => {
-    eventShuttle.addEventListener('ToolbarMode', handleMode)
+    eventShuttle.addEventListener('toolbarMode.mode', handleMode)
     //When component unmounts you must remove event listener.
     //If component will rerender 10 times it will execute handleMode 10 times when its called. 
     return () => {
-        eventShuttle.removeEventListener('ToolbarMode', handleMode)
+        eventShuttle.removeEventListener('toolbarMode.mode', handleMode)
     }
 })
 
-<button onClick={() => eventShuttle.dispatch('ToolbarMode', { mode: data.value })}>Click ME!<button/>
+<button onClick={() => eventShuttle.dispatch('toolbarMode.mode', { mode: data.value })}>Click ME!<button/>
 ```
