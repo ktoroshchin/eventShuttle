@@ -9,13 +9,13 @@ import eventShuttle from 'eventShuttle.ts';
 ## Adding Listeners
 The EventShuttle attaches one or more listeners to a single event by using a unique event key (string) per event. There is no limit to how many listeners can be attached to a single event key. Event listeners are called in the order they are added.
 
-eventShuttle.addListener('unique.event.key', myEventHandlerFunction);
+eventShuttle.addListener('unique.event.key', myEventHandlerFunction)
 Tip: It is recommended to export your event keys as constants from a shared file.
 
 ## Removing Listeners & Cleaning Up
 To avoid memory leaks, event listeners must be removed when they are no longer needed. The same key and function which were provided to addEventListener must be provided to removeEventListener.
 
-eventShuttle.removeEventListener('unique.event.key', myEventHandlerFunction);
+eventShuttle.removeEventListener('unique.event.key', myEventHandlerFunction)
 
 Removing Listeners
 
@@ -24,8 +24,9 @@ Both the key and the event must be exactly the same as the ones provided to the 
 ## Dispatching Events
 Sending an event through the eventShuttle is done with the dispatch function.
 
-eventShuttle.dispatch('unique.event.key' [, payload]);
-Any object, array or primitive can be sent along with the event via the optional payload parameter. The payload will be the second parameter provided to the event listeners.
+eventShuttle.dispatch('unique.event.key' [, payload])
+Any object, array or primitive can be sent along with the event via the optional payload parameter. 
+The payload will be the second parameter provided to the event listeners.
 
 ## React use case
 ```
@@ -43,4 +44,6 @@ React.useEffect(() => {
         eventShuttle.removeEventListener('ToolbarMode', handleMode)
     }
 })
+
+<button onClick={() => eventShuttle.dispatch('ToolbarMode', { mode: data.value })}>Click ME!<button/>
 ```
