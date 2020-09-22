@@ -14,22 +14,28 @@ Tip: It is recommended to export your event keys as constants from a shared file
 
 ## Removing Listeners & Cleaning Up
 To avoid memory leaks, event listeners must be removed when they are no longer needed. The same key and function which were provided to addEventListener must be provided to removeEventListener.
-
+```
 eventShuttle.removeEventListener('unique.event.key', myEventHandlerFunction)
+```
 
 Removing Listeners
 
 Both the key and the event must be exactly the same as the ones provided to the addEventListener function. The listener function must be a reference to exactly the same function. This means you cannot use an anonymous function in your addEventListener call.
 
 Dont do this: 
+```
 eventShuttle.addEventListener('toolbarMode.mdoe', () => console.log('hello world'))
+```
 You wont be able to remove this event listener.
+```
 eventShuttle.removeEventListener('toolbarMode.mode', () => console.log('hello world'))
+```
 
 ## Dispatching Events
 Sending an event through the eventShuttle is done with the dispatch function.
-
+```
 eventShuttle.dispatch('toolbarMode.mode' [, payload])
+```
 Any object, array or primitive can be sent along with the event via the optional payload parameter. 
 The payload will be the second parameter provided to the event listeners.
 
