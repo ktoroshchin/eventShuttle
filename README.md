@@ -28,6 +28,7 @@ eventShuttle.dispatch('unique.event.key' [, payload]);
 Any object, array or primitive can be sent along with the event via the optional payload parameter. The payload will be the second parameter provided to the event listeners.
 
 ## React use case
+```
 const handleMode = (eventName: string, payload: { mode: string }) => {
     setState({
         uiMode: mode
@@ -42,3 +43,4 @@ React.useEffect(() => {
         eventShuttle.removeEventListener('ToolbarMode', handleMode)
     }
 })
+```
