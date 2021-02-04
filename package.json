@@ -1,6 +1,6 @@
 {
   "name": "@kteventshuttle/shuttle",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The EventShuttle service is a subscribe event manager which allows de-coupling of event source and handler",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
