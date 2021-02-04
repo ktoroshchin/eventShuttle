@@ -2,9 +2,9 @@
 The EventShuttle service is a subscribe event manager which allows de-coupling of event source and handler.
 
 ## Implementation
-The EventShuttle is a singleton, so any file in any on-page app which imports the EventBus will receive the same instance. This allows for events to be raised on one app and handled in another.
+The EventShuttle is a singleton, so any file in any on-page app which imports the eventShuttle will receive the same instance. This allows for events to be raised on one app and handled in another.
 
-import eventShuttle from 'eventShuttle.ts';
+import { eventShuttle } from '@kteventshuttle/shuttle.ts';
 
 ## Adding Listeners
 The EventShuttle attaches one or more listeners to a single event by using a unique event key (string) per event. There is no limit to how many listeners can be attached to a single event key. Event listeners are called in the order they are added.
