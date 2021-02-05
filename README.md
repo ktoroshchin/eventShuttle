@@ -24,17 +24,17 @@ Both the key and the event must be exactly the same as the ones provided to the 
 
 Dont do this: 
 ```
-eventShuttle.addEventListener('toolbarMode.mdoe', () => console.log('hello world'))
+eventShuttle.addEventListener('toolbarMode', () => console.log('hello world'))
 ```
 You wont be able to remove this event listener.
 ```
-eventShuttle.removeEventListener('toolbarMode.mode', () => console.log('hello world'))
+eventShuttle.removeEventListener('toolbarMode', () => console.log('hello world'))
 ```
 
 ## Dispatching Events
 Sending an event through the eventShuttle is done with the dispatch function.
 ```
-eventShuttle.dispatch('toolbarMode.mode' [, payload])
+eventShuttle.dispatch('toolbarMode' [, payload])
 ```
 Any object, array or primitive can be sent along with the event via the optional payload parameter. 
 The payload will be the second parameter provided to the event listeners.
@@ -52,7 +52,7 @@ React.useEffect(() => {
     //When component unmounts you must remove event listener.
     //If component will rerender 10 times it will execute handleMode 10 times when its called. 
     return () => {
-        eventShuttle.removeEventListener('toolbarMode.mode', handleMode)
+        eventShuttle.removeEventListener('toolbarMode', handleMode)
     }
 })
 
