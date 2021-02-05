@@ -4,18 +4,18 @@ The EventShuttle service is a subscribe event manager which allows de-coupling o
 ## Implementation
 The EventShuttle is a singleton, so any file in any on-page app which imports the eventShuttle will receive the same instance. This allows for events to be raised on one app and handled in another.
 
-import { eventShuttle } from '@kteventshuttle/shuttle.ts';
+import { eventShuttle } from '@kteventshuttle/shuttle';
 
 ## Adding Listeners
 The EventShuttle attaches one or more listeners to a single event by using a unique event key (string) per event. There is no limit to how many listeners can be attached to a single event key. Event listeners are called in the order they are added.
 
-eventShuttle.addListener('unique.event.key', myEventHandlerFunction)
+eventShuttle.addListener('unique_key', myEventHandlerFunction)
 Tip: It is recommended to export your event keys as constants from a shared file.
 
 ## Removing Listeners & Cleaning Up
 To avoid memory leaks, event listeners must be removed when they are no longer needed. The same key and function which were provided to addEventListener must be provided to removeEventListener.
 ```
-eventShuttle.removeEventListener('unique.event.key', myEventHandlerFunction)
+eventShuttle.removeEventListener('unique_key', myEventHandlerFunction)
 ```
 
 Removing Listeners
@@ -48,7 +48,7 @@ const handleMode = (eventName: string, payload: { mode: string }) => {
 }
 
 React.useEffect(() => {
-    eventShuttle.addEventListener('toolbarMode.mode', handleMode)
+    eventShuttle.addEventListener('toolbarMode', handleMode)
     //When component unmounts you must remove event listener.
     //If component will rerender 10 times it will execute handleMode 10 times when its called. 
     return () => {
@@ -56,5 +56,5 @@ React.useEffect(() => {
     }
 })
 
-<button onClick={() => eventShuttle.dispatch('toolbarMode.mode', { mode: data.value })}>Click ME!<button/>
+<button onClick={(e, data) => eventShuttle.dispatch('toolbarMode', { mode: data.value })}>Click ME!<button/>
 ```

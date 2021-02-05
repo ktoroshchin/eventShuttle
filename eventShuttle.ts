@@ -34,7 +34,7 @@ class EventListenerManager {
     /**
      * Method envokes event 
      * @param eventName Event name to be executed
-     * @param payload 
+     * @param payload Object, Array, primitive
      */
     dispatchEvent = (eventName: string, payload?: Payload) => {
         this._listeners.forEach(listener => {
@@ -82,7 +82,7 @@ class EventShuttle {
     /**
      * Method envokes event
      * @param eventName Event name
-     * @param payload Any data
+     * @param payload Object, Array, primitive
      */
     public dispatch = (eventName: string, payload?: Payload) => {
         let event = this._eventMap.get(eventName)
